@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables CSS personalizadas */
+:root {
+  --navy: #002E4D;
+  --mint: #6FCF97;
+  --natural-white: #FAFAFA;
+  --sand-gray: #E0DDD5;
+}
+
+/* Componentes base */
+@layer base {
+  body {
+    @apply font-poppins bg-natural-white text-navy;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+/* Componentes personalizados */
+@layer components {
+  .btn-primary {
+    @apply bg-navy text-white px-6 py-3 rounded-2xl font-medium transition-all duration-300 hover:bg-opacity-90 hover:shadow-lg;
+  }
+  
+  .btn-secondary {
+    @apply bg-mint text-navy px-6 py-3 rounded-2xl font-medium transition-all duration-300 hover:bg-opacity-90 hover:shadow-lg;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-sm hover:shadow-md transition-all duration-300;
+  }
+  
+  .input-base {
+    @apply border border-sand-gray rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-mint focus:border-transparent transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-navy to-mint bg-clip-text text-transparent;
+  }
+  
+  .hero-gradient {
+    @apply bg-gradient-to-br from-navy via-navy to-mint;
+  }
+}
+
+/* Animaciones personalizadas */
+@layer utilities {
+  .animate-bounce-slow {
+    animation: bounce 2s infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sand-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--mint);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--navy);
+}

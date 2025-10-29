@@ -1,0 +1,11 @@
+# Placeholder para logo.png
+
+Este es un archivo placeholder. 
+
+Para reemplazar el logo de Padelmania:
+1. Guardá tu logo como logo.png en esta carpeta (/public/assets/)
+2. El tamaño recomendado es 200x50px o similar (horizontal)
+3. Formato PNG con fondo transparente recomendado
+4. Asegurate de que tenga buena legibilidad tanto en fondo claro como oscuro
+
+El logo actual se muestra como texto "Padelmania" cuando no se encuentra la imagen.

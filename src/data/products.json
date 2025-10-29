@@ -1,0 +1,207 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "PadelNature Pro",
+      "category": "pelotas",
+      "price": 15000,
+      "oldPrice": 18000,
+      "images": [
+        "/assets/images/pelota-nature-pro-1.jpg",
+        "/assets/images/pelota-nature-pro-2.jpg",
+        "/assets/images/pelota-nature-pro-3.jpg"
+      ],
+      "stock": 45,
+      "tags": ["premium", "profesional", "durabilidad"],
+      "description": "Pelota de pádel premium diseñada para jugadores que buscan rendimiento y durabilidad excepcional. Fabricada con materiales sostenibles.",
+      "specifications": {
+        "material": "Caucho natural premium",
+        "presion": "Optimizada para todas las condiciones",
+        "durabilidad": "Alta resistencia al desgaste",
+        "certificacion": "ITF Approved"
+      },
+      "createdAt": "2024-01-15"
+    },
+    {
+      "id": "2",
+      "title": "EcoSpin Soft",
+      "category": "pelotas",
+      "price": 12000,
+      "oldPrice": null,
+      "images": [
+        "/assets/images/pelota-ecospin-1.jpg",
+        "/assets/images/pelota-ecospin-2.jpg"
+      ],
+      "stock": 32,
+      "tags": ["eco-friendly", "suave", "iniciación"],
+      "description": "Pelota de iniciación con impacto suave, perfecta para principiantes. Fabricada con materiales 100% reciclables.",
+      "specifications": {
+        "material": "Caucho reciclado",
+        "presion": "Reducida para mayor control",
+        "durabilidad": "Media-alta",
+        "certificacion": "Eco-certified"
+      },
+      "createdAt": "2024-02-01"
+    },
+    {
+      "id": "3",
+      "title": "Grip Wave Control",
+      "category": "grips",
+      "price": 10000,
+      "oldPrice": 12000,
+      "images": [
+        "/assets/images/grip-wave-1.jpg",
+        "/assets/images/grip-wave-2.jpg",
+        "/assets/images/grip-wave-3.jpg"
+      ],
+      "stock": 67,
+      "tags": ["control", "absorción", "textura"],
+      "description": "Grip de alto rendimiento con textura ondulada para máximo control y absorción de humedad. Ideal para jugadores exigentes.",
+      "specifications": {
+        "material": "Poliuretano premium",
+        "grosor": "1.8mm",
+        "absorcion": "Alta absorción de humedad",
+        "instalacion": "Adhesivo incluido"
+      },
+      "createdAt": "2024-01-20"
+    },
+    {
+      "id": "4",
+      "title": "Cubregrip EcoFeel",
+      "category": "grips",
+      "price": 8000,
+      "oldPrice": null,
+      "images": [
+        "/assets/images/cubregrip-eco-1.jpg",
+        "/assets/images/cubregrip-eco-2.jpg"
+      ],
+      "stock": 89,
+      "tags": ["eco-friendly", "tacto suave", "reemplazo"],
+      "description": "Cubregrip ecológico con tacto natural y excelente adherencia. Fabricado con materiales sostenibles.",
+      "specifications": {
+        "material": "Fibra natural tratada",
+        "grosor": "0.5mm",
+        "absorcion": "Media absorción",
+        "instalacion": "Fácil instalación"
+      },
+      "createdAt": "2024-02-10"
+    },
+    {
+      "id": "5",
+      "title": "Gorra AirFlow Verde",
+      "category": "accesorios",
+      "price": 20000,
+      "oldPrice": 25000,
+      "images": [
+        "/assets/images/gorra-airflow-verde-1.jpg",
+        "/assets/images/gorra-airflow-verde-2.jpg",
+        "/assets/images/gorra-airflow-verde-3.jpg"
+      ],
+      "stock": 23,
+      "tags": ["ventilación", "UV protection", "ajustable"],
+      "description": "Gorra técnica con sistema de ventilación AirFlow y protección UV. Perfecta para largas sesiones de juego bajo el sol.",
+      "specifications": {
+        "material": "Poliéster técnico transpirable",
+        "proteccion": "UV 50+",
+        "ajuste": "Velcro ajustable",
+        "peso": "85 gramos"
+      },
+      "createdAt": "2024-01-25"
+    },
+    {
+      "id": "6",
+      "title": "Gorra ArenaWave",
+      "category": "accesorios",
+      "price": 22000,
+      "oldPrice": null,
+      "images": [
+        "/assets/images/gorra-arenawave-1.jpg",
+        "/assets/images/gorra-arenawave-2.jpg"
+      ],
+      "stock": 18,
+      "tags": ["premium", "arena", "elegante"],
+      "description": "Gorra premium con diseño inspirado en la arena y las olas. Combina estilo y funcionalidad para el jugador moderno.",
+      "specifications": {
+        "material": "Algodón premium y mesh",
+        "proteccion": "UV 30+",
+        "ajuste": "Snapback",
+        "peso": "95 gramos"
+      },
+      "createdAt": "2024-02-05"
+    },
+    {
+      "id": "7",
+      "title": "Muñequera SoftShield Azul",
+      "category": "accesorios",
+      "price": 14000,
+      "oldPrice": 16000,
+      "images": [
+        "/assets/images/munequera-softshield-azul-1.jpg",
+        "/assets/images/munequera-softshield-azul-2.jpg"
+      ],
+      "stock": 41,
+      "tags": ["absorción", "comodidad", "ajuste"],
+      "description": "Muñequera de alto rendimiento con tecnología SoftShield para máxima absorción y comodidad durante el juego.",
+      "specifications": {
+        "material": "Microfibra absorbente",
+        "grosor": "12mm",
+        "absorcion": "Absorción superior",
+        "lavado": "Lavable en máquina"
+      },
+      "createdAt": "2024-01-30"
+    },
+    {
+      "id": "8",
+      "title": "Muñequera FreshGrip Blanca",
+      "category": "accesorios",
+      "price": 16000,
+      "oldPrice": null,
+      "images": [
+        "/assets/images/munequera-freshgrip-blanca-1.jpg",
+        "/assets/images/munequera-freshgrip-blanca-2.jpg",
+        "/assets/images/munequera-freshgrip-blanca-3.jpg"
+      ],
+      "stock": 35,
+      "tags": ["antibacterial", "fresco", "grip"],
+      "description": "Muñequera con tecnología antibacterial FreshGrip que mantiene las manos secas y libres de olores durante todo el partido.",
+      "specifications": {
+        "material": "Bambú tratado con silver ion",
+        "grosor": "10mm",
+        "absorcion": "Absorción rápida",
+        "propiedades": "Antibacterial y antifúngico"
+      },
+      "createdAt": "2024-02-15"
+    }
+  ],
+  "categories": [
+    {
+      "id": "pelotas",
+      "name": "Pelotas",
+      "description": "Pelotas de pádel de alta calidad para todos los niveles"
+    },
+    {
+      "id": "grips",
+      "name": "Grips",
+      "description": "Grips y cubregrips para mejorar tu agarre y control"
+    },
+    {
+      "id": "accesorios",
+      "name": "Accesorios",
+      "description": "Gorras, muñequeras y complementos para tu juego"
+    }
+  ],
+  "tags": [
+    "premium",
+    "eco-friendly",
+    "profesional",
+    "iniciación",
+    "durabilidad",
+    "control",
+    "absorción",
+    "ventilación",
+    "UV protection",
+    "antibacterial",
+    "comodidad",
+    "elegante"
+  ]
+}
