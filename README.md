@@ -192,17 +192,52 @@ VITE_ANALYTICS_ID=tu-analytics-id
 
 ## 🔗 Integraciones Pendientes
 
-### 💳 Pasarela de Pagos
-**Ubicación para integrar**: `/src/components/Cart.jsx` línea 45
+### 💳 Pasarela de Pagos ✅ **IMPLEMENTADO**
+**Ubicación**: `/src/components/PaymentIntegration.jsx`  
+**Integrado en**: `/src/components/Cart.jsx`
 
 ```javascript
-const handleCheckout = () => {
-  // INTEGRAR AQUÍ:
-  // - MercadoPago: https://github.com/mercadopago/sdk-react
-  // - Stripe: https://stripe.com/docs/stripe-js/react
-  // - PayPal: https://developer.paypal.com/docs/checkout/
-};
+// Ahora con interfaz completa para 3 pasarelas:
+// ✅ MercadoPago (Argentina/LATAM)
+// ✅ Stripe (Internacional)
+// ✅ PayPal (Internacional)
+
+// Ver documentación completa:
+// docs/PAYMENT_INTEGRATION.md
 ```
+
+**Para activar pagos reales:**
+
+1. **Instalar SDKs necesarios:**
+```bash
+npm install @mercadopago/sdk-react @stripe/stripe-js @stripe/react-stripe-js @paypal/react-paypal-js
+```
+
+2. **Configurar variables de entorno:**
+```bash
+# MercadoPago
+VITE_MERCADOPAGO_PUBLIC_KEY=TEST-xxxxxxxx
+
+# Stripe  
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_xxxxxxxx
+
+# PayPal
+VITE_PAYPAL_CLIENT_ID=xxxxxxxx
+```
+
+3. **Implementar backend:**
+   - Crear endpoints para generar órdenes
+   - Configurar webhooks para confirmaciones
+   - Ver ejemplos completos en `docs/PAYMENT_INTEGRATION.md`
+
+**Características actuales:**
+- ✅ UI completa con selección de método
+- ✅ Comparación de comisiones y características
+- ✅ Simulación de proceso de pago
+- ✅ Manejo de errores y estados
+- ⚠️ Requiere credenciales reales para producción
+
+**Documentación:** Ver guía completa en [`/docs/PAYMENT_INTEGRATION.md`](/docs/PAYMENT_INTEGRATION.md)
 
 ### 📦 CMS/Backend
 **Ubicaciones para conectar**:

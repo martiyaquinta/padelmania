@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from './CartProvider';
 import { formatCurrency } from '../utils/currency';
 import Modal from './Modal';
+import PaymentIntegration from './PaymentIntegration';
 
 const Cart = ({ isOpen, onClose }) => {
   const { 
@@ -15,6 +16,7 @@ const Cart = ({ isOpen, onClose }) => {
     getInstallmentInfo 
   } = useCart();
 
+  const [showPayment, setShowPayment] = useState(false);
   const installmentInfo = getInstallmentInfo();
 
   const handleQuantityChange = (productId, newQuantity) => {
@@ -26,8 +28,51 @@ const Cart = ({ isOpen, onClose }) => {
   };
 
   const handleCheckout = () => {
-    // Aquí iría la integración con el sistema de pagos
-    alert('¡Funcionalidad de checkout en desarrollo! 🚧\n\nEsta es una demostración. En un entorno real, aquí se integraría con:\n- MercadoPago\n- Stripe\n- PayPal\n- O la pasarela de pagos preferida');
+    // INTEGRACIÓN DE PASARELAS DE PAGO
+    // Muestra el componente PaymentIntegration con las siguientes opciones:
+    // 
+    // 1. MERCADOPAGO (Recomendado para Argentina/LATAM)
+    //    - Instalar: npm install @mercadopago/sdk-react
+    //    - Docs: https://github.com/mercadopago/sdk-react
+    //    - Soporta: Tarjetas, transferencia, efectivo, cuotas sin interés
+    // 
+    // 2. STRIPE (Pagos internacionales)
+    //    - Instalar: npm install @stripe/stripe-js @stripe/react-stripe-js
+    //    - Docs: https://stripe.com/docs/stripe-js/react
+    //    - Soporta: Tarjetas internacionales, Apple Pay, Google Pay
+    // 
+    // 3. PAYPAL (Alternativa internacional)
+    //    - Instalar: npm install @paypal/react-paypal-js
+    //    - Docs: https://developer.paypal.com/docs/checkout/
+    //    - Soporta: Cuenta PayPal, tarjetas
+    
+    setShowPayment(true);
+  };
+
+  const handlePaymentSuccess = (paymentDetails) => {
+    console.log('✅ Pago exitoso:', paymentDetails);
+    
+    // Aquí podés:
+    // 1. Enviar la orden a tu backend
+    // 2. Guardar en base de datos
+    // 3. Enviar email de confirmación
+    // 4. Generar número de orden
+    
+    alert(
+      `¡Pago procesado exitosamente! 🎉\n\n` +
+      `Método: ${paymentDetails.method}\n` +
+      `ID Transacción: ${paymentDetails.transactionId}\n` +
+      `Monto: ${formatCurrency(paymentDetails.amount)}\n\n` +
+      `En un entorno real, aquí se procesaría la orden.`
+    );
+    
+    clearCart();
+    setShowPayment(false);
+    onClose();
+  };
+
+  const handlePaymentCancel = () => {
+    setShowPayment(false);
   };
 
   const EmptyCart = () => (
@@ -137,11 +182,22 @@ const Cart = ({ isOpen, onClose }) => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      title={`Carrito de compras ${itemCount > 0 ? `(${itemCount})` : ''}`}
+      title={
+        showPayment 
+          ? 'Método de pago' 
+          : `Carrito de compras ${itemCount > 0 ? `(${itemCount})` : ''}`
+      }
       size="md"
       className="max-h-[90vh]"
     >
-      {items.length === 0 ? (
+      {showPayment ? (
+        <PaymentIntegration
+          total={total}
+          items={items}
+          onSuccess={handlePaymentSuccess}
+          onCancel={handlePaymentCancel}
+        />
+      ) : items.length === 0 ? (
         <EmptyCart />
       ) : (
         <>

@@ -28,9 +28,6 @@ const Header = ({ onCartOpen }) => {
       {/* Barra superior de anuncio */}
       <div className="bg-navy text-white py-2 px-4">
         <div className="container mx-auto text-center">
-          <p className="text-sm font-medium">
-            🚚 Hasta 6 cuotas sin interés — Envío gratis desde $50.000
-          </p>
         </div>
       </div>
 
