@@ -1,38 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { formatCurrency } from '../utils/currency';
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
 
 /**
  * PaymentIntegration Component
  * 
  * Componente para integrar múltiples pasarelas de pago.
- * Permite seleccionar entre MercadoPago, Stripe y PayPal.
+ * ✅ MercadoPago - INTEGRADO Y FUNCIONAL
+ * ⚠️ Stripe - Requiere instalación: npm install @stripe/stripe-js @stripe/react-stripe-js
+ * ⚠️ PayPal - Requiere instalación: npm install @paypal/react-paypal-js
  * 
- * Para integrar las pasarelas reales:
+ * Para activar MercadoPago:
+ * 1. Configurar VITE_MERCADOPAGO_PUBLIC_KEY en .env
+ * 2. Obtener key en: https://www.mercadopago.com.ar/developers/panel/credentials
+ * 3. Implementar backend para crear preferencias
  * 
- * 1. MERCADOPAGO (Argentina/LATAM)
- *    npm install @mercadopago/sdk-react
- *    Docs: https://github.com/mercadopago/sdk-react
- *    
- *    import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
- *    initMercadoPago('YOUR_PUBLIC_KEY');
- * 
- * 2. STRIPE (Internacional)
+ * Para integrar Stripe:
  *    npm install @stripe/stripe-js @stripe/react-stripe-js
  *    Docs: https://stripe.com/docs/stripe-js/react
- *    
- *    import { loadStripe } from '@stripe/stripe-js';
- *    import { Elements, CardElement } from '@stripe/react-stripe-js';
  * 
- * 3. PAYPAL (Internacional)
+ * Para integrar PayPal:
  *    npm install @paypal/react-paypal-js
  *    Docs: https://developer.paypal.com/docs/checkout/
- *    
- *    import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
  */
+
+// Inicializar MercadoPago si hay public key configurada
+const mercadoPagoPublicKey = import.meta.env.VITE_MERCADOPAGO_PUBLIC_KEY;
+if (mercadoPagoPublicKey && mercadoPagoPublicKey !== 'TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx') {
+  try {
+    initMercadoPago(mercadoPagoPublicKey, { locale: 'es-AR' });
+  } catch (error) {
+    console.error('Error inicializando MercadoPago:', error);
+  }
+}
 
 const PaymentIntegration = ({ total, items, onSuccess, onCancel }) => {
   const [selectedMethod, setSelectedMethod] = useState('mercadopago');
   const [isProcessing, setIsProcessing] = useState(false);
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [showMercadoPagoWallet, setShowMercadoPagoWallet] = useState(false);
+
+  // Verificar si MercadoPago está configurado
+  const isMercadoPagoConfigured = mercadoPagoPublicKey && 
+    mercadoPagoPublicKey !== 'TEST-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx';
+
+  useEffect(() => {
+    // Limpiar estado al cambiar de método
+    setPreferenceId(null);
+    setShowMercadoPagoWallet(false);
+  }, [selectedMethod]);
 
   const paymentMethods = [
     {
@@ -72,31 +88,45 @@ const PaymentIntegration = ({ total, items, onSuccess, onCancel }) => {
     setIsProcessing(true);
     
     try {
-      // TODO: Implementar integración real
-      // 1. Crear preferencia de pago en tu backend
+      if (!isMercadoPagoConfigured) {
+        // Modo demo/simulación
+        console.log('MercadoPago - Modo DEMO');
+        console.log('Items:', items);
+        console.log('Total:', total);
+        
+        await simulatePaymentProcess();
+        onSuccess({
+          method: 'mercadopago',
+          transactionId: `MP-DEMO-${Date.now()}`,
+          amount: total,
+        });
+        return;
+      }
+
+      // Modo REAL - Crear preferencia de pago
+      console.log('MercadoPago - Modo REAL - Creando preferencia...');
+      
+      // TODO: Implementar tu backend endpoint
+      // Por ahora usamos la API directa (solo para testing, en producción usar backend)
       const preference = await createMercadoPagoPreference();
       
-      // 2. Redirigir al checkout de MercadoPago
-      // window.location.href = preference.init_point;
-      
-      // 3. O usar el componente Wallet para checkout embebido
-      // <Wallet initialization={{ preferenceId: preference.id }} />
-      
-      console.log('MercadoPago - Items:', items);
-      console.log('MercadoPago - Total:', total);
-      
-      // Simulación para demo
-      await simulatePaymentProcess();
-      onSuccess({
-        method: 'mercadopago',
-        transactionId: `MP-${Date.now()}`,
-        amount: total,
-      });
+      if (preference && preference.id) {
+        setPreferenceId(preference.id);
+        setShowMercadoPagoWallet(true);
+        console.log('✅ Preferencia creada:', preference.id);
+      } else {
+        throw new Error('No se pudo crear la preferencia de pago');
+      }
       
     } catch (error) {
       console.error('Error en MercadoPago:', error);
-      alert('Error al procesar el pago con MercadoPago');
-    } finally {
+      alert(
+        'Error al procesar el pago con MercadoPago.\n\n' +
+        'Asegurate de:\n' +
+        '1. Tener configurado VITE_MERCADOPAGO_PUBLIC_KEY en .env\n' +
+        '2. Tener un backend endpoint para crear preferencias\n' +
+        '3. Ver la consola para más detalles'
+      );
       setIsProcessing(false);
     }
   };
@@ -183,18 +213,58 @@ const PaymentIntegration = ({ total, items, onSuccess, onCancel }) => {
 
   // Funciones auxiliares para backend (implementar en tu API)
   const createMercadoPagoPreference = async () => {
-    // TODO: Llamar a tu backend
-    // const response = await fetch('/api/mercadopago/create-preference', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ items, total })
-    // });
-    // return await response.json();
+    // TODO: Implementar endpoint en tu backend
+    // Este es un ejemplo de lo que debería hacer tu backend:
     
-    return {
-      id: 'demo-preference-id',
-      init_point: 'https://www.mercadopago.com/checkout/demo'
+    /*
+    Backend endpoint: POST /api/mercadopago/create-preference
+    
+    import mercadopago from 'mercadopago';
+    
+    mercadopago.configure({
+      access_token: process.env.MERCADOPAGO_ACCESS_TOKEN
+    });
+    
+    const preference = {
+      items: items.map(item => ({
+        title: item.title,
+        unit_price: item.price,
+        quantity: item.quantity,
+        currency_id: 'ARS',
+      })),
+      back_urls: {
+        success: window.location.origin + '/payment/success',
+        failure: window.location.origin + '/payment/failure',
+        pending: window.location.origin + '/payment/pending'
+      },
+      auto_return: 'approved',
+      notification_url: 'https://tu-dominio.com/api/mercadopago/webhook',
     };
+    
+    const response = await mercadopago.preferences.create(preference);
+    return response.body;
+    */
+    
+    // Por ahora, llamar a tu backend (debes implementarlo)
+    const response = await fetch('/api/mercadopago/create-preference', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        items: items.map(item => ({
+          title: item.title,
+          unit_price: item.price,
+          quantity: item.quantity,
+          currency_id: 'ARS',
+        })),
+        total 
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error('Error al crear preferencia: ' + response.statusText);
+    }
+    
+    return await response.json();
   };
 
   const createStripeCheckoutSession = async () => {
@@ -339,78 +409,133 @@ const PaymentIntegration = ({ total, items, onSuccess, onCancel }) => {
       </div>
 
       {/* Información importante */}
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-        <div className="flex items-start space-x-3">
-          <span className="text-blue-500 text-xl">ℹ️</span>
-          <div className="text-sm text-blue-900">
-            <p className="font-medium mb-1">Información importante</p>
-            <p>
-              Esta es una demostración. Para usar los métodos de pago reales,
-              necesitás configurar las credenciales de cada pasarela en tu backend
-              y completar la integración según la documentación oficial.
-            </p>
+      {!isMercadoPagoConfigured && (
+        <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div className="flex items-start space-x-3">
+            <span className="text-blue-500 text-xl">ℹ️</span>
+            <div className="text-sm text-blue-900">
+              <p className="font-medium mb-1">Modo Demo</p>
+              <p>
+                Para activar MercadoPago real, configurá{' '}
+                <code className="bg-blue-100 px-1 rounded">
+                  VITE_MERCADOPAGO_PUBLIC_KEY
+                </code>{' '}
+                en tu archivo <code className="bg-blue-100 px-1 rounded">.env</code>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
-      {/* Botones de acción */}
-      <div className="flex space-x-3">
-        <button
-          onClick={onCancel}
-          className="flex-1 bg-gray-200 text-gray-700 px-6 py-4 rounded-xl font-semibold hover:bg-gray-300 transition-colors"
-          disabled={isProcessing}
-        >
-          Volver
-        </button>
-        <button
-          onClick={handleProceedToPayment}
-          className="flex-1 btn-primary py-4 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={isProcessing}
-        >
-          {isProcessing ? (
-            <span className="flex items-center justify-center">
-              <svg
-                className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                />
-              </svg>
-              Procesando...
-            </span>
-          ) : (
-            `Pagar ${formatCurrency(total)}`
-          )}
-        </button>
-      </div>
+      {/* MercadoPago Wallet (checkout embebido) */}
+      {showMercadoPagoWallet && preferenceId && (
+        <div className="bg-white border-2 border-mint rounded-xl p-4">
+          <div className="text-center mb-4">
+            <div className="text-mint text-4xl mb-2">💳</div>
+            <h3 className="font-semibold text-navy mb-1">
+              Checkout de MercadoPago
+            </h3>
+            <p className="text-sm text-gray-600">
+              Completá el pago de forma segura
+            </p>
+          </div>
+          
+          <Wallet 
+            initialization={{ preferenceId, redirectMode: 'self' }}
+            customization={{
+              texts: {
+                valueProp: 'security_safety',
+              },
+            }}
+            onSubmit={() => {
+              console.log('MercadoPago - Pago iniciado');
+            }}
+            onReady={() => {
+              setIsProcessing(false);
+              console.log('MercadoPago - Wallet listo');
+            }}
+            onError={(error) => {
+              console.error('MercadoPago - Error:', error);
+              setIsProcessing(false);
+              alert('Error al cargar el checkout de MercadoPago');
+            }}
+          />
+          
+          <button
+            onClick={() => {
+              setShowMercadoPagoWallet(false);
+              setPreferenceId(null);
+              setIsProcessing(false);
+            }}
+            className="w-full mt-4 text-center text-sm text-gray-600 hover:text-navy transition-colors"
+          >
+            ← Elegir otro método de pago
+          </button>
+        </div>
+      )}
 
-      {/* Trust badges */}
-      <div className="grid grid-cols-3 gap-4 text-center pt-4 border-t">
-        <div className="text-xs text-gray-600">
-          <div className="text-green-500 text-lg mb-1">🔒</div>
-          <span>Pago seguro SSL</span>
-        </div>
-        <div className="text-xs text-gray-600">
-          <div className="text-green-500 text-lg mb-1">✅</div>
-          <span>Verificado</span>
-        </div>
-        <div className="text-xs text-gray-600">
-          <div className="text-green-500 text-lg mb-1">🛡️</div>
-          <span>Protección al comprador</span>
-        </div>
-      </div>
+      {/* Botones de acción - Solo mostrar si no está el wallet de MercadoPago */}
+      {!showMercadoPagoWallet && (
+        <>
+          <div className="flex space-x-3">
+            <button
+              onClick={onCancel}
+              className="flex-1 bg-gray-200 text-gray-700 px-6 py-4 rounded-xl font-semibold hover:bg-gray-300 transition-colors"
+              disabled={isProcessing}
+            >
+              Volver
+            </button>
+            <button
+              onClick={handleProceedToPayment}
+              className="flex-1 btn-primary py-4 font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={isProcessing}
+            >
+              {isProcessing ? (
+                <span className="flex items-center justify-center">
+                  <svg
+                    className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    />
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    />
+                  </svg>
+                  Procesando...
+                </span>
+              ) : (
+                `Pagar ${formatCurrency(total)}`
+              )}
+            </button>
+          </div>
+
+          {/* Trust badges */}
+          <div className="grid grid-cols-3 gap-4 text-center pt-4 border-t">
+            <div className="text-xs text-gray-600">
+              <div className="text-green-500 text-lg mb-1">🔒</div>
+              <span>Pago seguro SSL</span>
+            </div>
+            <div className="text-xs text-gray-600">
+              <div className="text-green-500 text-lg mb-1">✅</div>
+              <span>Verificado</span>
+            </div>
+            <div className="text-xs text-gray-600">
+              <div className="text-green-500 text-lg mb-1">🛡️</div>
+              <span>Protección al comprador</span>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
