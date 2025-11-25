@@ -388,8 +388,8 @@ const Contact = () => {
               <div className="bg-white p-6 rounded-xl shadow-sm">
                 <h3 className="font-semibold text-navy mb-2">¿Qué métodos de pago aceptan?</h3>
                 <p className="text-sm text-gray-600">
-                  Aceptamos tarjetas de crédito/débito, transferencia bancaria 
-                  y MercadoPago. Hasta 6 cuotas sin interés.
+                  Aceptamos pago por transferencia bancaria. 
+                  Coordinamos todos los detalles por WhatsApp.
                 </p>
               </div>
               

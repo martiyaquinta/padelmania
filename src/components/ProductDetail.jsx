@@ -178,11 +178,6 @@ const ProductDetail = ({ product }) => {
               )}
             </div>
             
-            {/* Cuotas */}
-            <p className="text-mint font-medium">
-              {installmentInfo.description}
-            </p>
-            
             {discountInfo.hasDiscount && (
               <p className="text-green-600 font-medium">
                 ¡Ahorrás {formatCurrency(discountInfo.savings)}!

@@ -113,11 +113,6 @@ const ProductCard = ({ product }) => {
               </span>
             )}
           </div>
-          
-          {/* Cuotas */}
-          <p className="text-sm text-gray-600">
-            6 cuotas sin interés de {formatCurrency(Math.ceil(product.price / 6))}
-          </p>
         </div>
 
         {/* Acciones */}

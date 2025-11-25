@@ -63,7 +63,7 @@ const ChatBot = () => {
         
       case "promos":
         addMessage("Quiero ver las promociones", false);
-        simulateTyping("🎉 ¡Tenemos ofertas increíbles! Productos con hasta 25% de descuento y envío gratis en compras superiores a $50.000. Además, todas las compras tienen 6 cuotas sin interés. ¡Aprovechá!");
+        simulateTyping("🎉 ¡Tenemos ofertas increíbles! Productos con hasta 25% de descuento y envío gratis en compras superiores a $50.000. ¡Aprovechá!");
         break;
         
       case "contact":
@@ -98,11 +98,11 @@ const ChatBot = () => {
       const recommendations = getRandomProducts();
       botResponse = `🌟 Basándome en tu consulta, te recomiendo:\n\n${recommendations.map(p => `• ${p.title} - $${p.price.toLocaleString()}`).join('\n')}\n\n¿Te interesa alguno de estos?`;
     } else if (userMessage.toLowerCase().includes('precio') || userMessage.toLowerCase().includes('costo')) {
-      botResponse = "💰 Todos nuestros productos tienen 6 cuotas sin interés y envío gratis desde $50.000. Los precios van desde $8.000 hasta $25.000. ¿Buscás algo en particular?";
+      botResponse = "💰 Envío gratis en compras desde $50.000. Los precios van desde $8.000 hasta $25.000. ¿Buscás algo en particular?";
     } else if (userMessage.toLowerCase().includes('envío') || userMessage.toLowerCase().includes('envio')) {
       botResponse = "🚚 Ofrecemos envío gratis en compras superiores a $50.000. Para compras menores, el costo de envío se calcula en el checkout según tu ubicación. ¡Los envíos llegan en 3-5 días hábiles!";
     } else if (userMessage.toLowerCase().includes('cuotas') || userMessage.toLowerCase().includes('pago')) {
-      botResponse = "💳 Aceptamos todas las tarjetas de crédito con hasta 6 cuotas sin interés. También podés pagar con débito, transferencia bancaria o MercadoPago. ¡Pagá como más te convenga!";
+      botResponse = "💳 Aceptamos pago por transferencia bancaria. Coordinamos todos los detalles por WhatsApp. ¡Es rápido y seguro!";
     } else if (userMessage.toLowerCase().includes('stock') || userMessage.toLowerCase().includes('disponible')) {
       botResponse = "📦 Mantenemos stock actualizado en tiempo real. Si un producto figura como disponible, lo tenemos listo para enviar. ¿Hay algún producto específico que te interese?";
     } else if (userMessage.toLowerCase().includes('pelota')) {
