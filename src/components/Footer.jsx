@@ -34,24 +34,6 @@ const Footer = () => {
         { name: 'Accesorios', href: '/shop?category=accesorios' },
         { name: 'Ofertas', href: '/shop?discount=true' }
       ]
-    },
-    {
-      title: 'Empresa',
-      links: [
-        { name: 'Acerca de nosotros', href: '/about' },
-        { name: 'Contacto', href: '/contact' },
-        { name: 'Blog', href: '#' },
-        { name: 'Términos y condiciones', href: '#' }
-      ]
-    },
-    {
-      title: 'Ayuda',
-      links: [
-        { name: 'Preguntas frecuentes', href: '#' },
-        { name: 'Guía de talles', href: '#' },
-        { name: 'Cambios y devoluciones', href: '#' },
-        { name: 'Seguimiento de pedido', href: '#' }
-      ]
     }
   ];
 
@@ -94,9 +76,9 @@ const Footer = () => {
 
       {/* Main footer content */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Brand section */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2">{
             <Link to="/" className="flex items-center space-x-2 mb-4">
               <img 
                 src="/assets/logo.png" 
