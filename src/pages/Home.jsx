@@ -1,8 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import HeroSection from '../components/HeroSection';
 import ProductGrid from '../components/ProductGrid';
 
 const Home = () => {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState('');
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!newsletterEmail.trim()) {
+      setNewsletterStatus('error');
+      return;
+    }
+
+    // Crear el enlace mailto para enviar la suscripción
+    const subject = encodeURIComponent('Nueva suscripción al newsletter - Padelmania');
+    const body = encodeURIComponent(
+      `Nueva suscripción al newsletter:\n\n` +
+      `Email: ${newsletterEmail}\n` +
+      `Fecha: ${new Date().toLocaleString('es-AR')}\n\n` +
+      `Por favor, agregar este email a la lista de suscriptores.`
+    );
+    
+    const mailtoLink = `mailto:padelmaniasierras@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+    
+    // Mostrar mensaje de éxito
+    setNewsletterStatus('success');
+    setNewsletterEmail('');
+    
+    // Limpiar mensaje después de 5 segundos
+    setTimeout(() => {
+      setNewsletterStatus('');
+    }, 5000);
+  };
+
   return (
     <div>
       {/* Hero Section */}
@@ -88,11 +121,13 @@ const Home = () => {
               del mundo del pádel directamente en tu email.
             </p>
             
-            <form className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Tu email"
                 className="flex-1 input-base"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
                 required
               />
               <button
@@ -103,9 +138,23 @@ const Home = () => {
               </button>
             </form>
             
-            <p className="text-sm text-gray-500 mt-4">
-              Te podés desuscribir en cualquier momento. Leé nuestra política de privacidad.
-            </p>
+            {newsletterStatus === 'success' && (
+              <p className="text-sm text-green-600 mt-4 font-medium">
+                ✓ ¡Gracias por suscribirte! Te contactaremos pronto.
+              </p>
+            )}
+            
+            {newsletterStatus === 'error' && (
+              <p className="text-sm text-red-600 mt-4 font-medium">
+                Por favor, ingresá un email válido.
+              </p>
+            )}
+            
+            {!newsletterStatus && (
+              <p className="text-sm text-gray-500 mt-4">
+                Te podés desuscribir en cualquier momento. Leé nuestra política de privacidad.
+              </p>
+            )}
           </div>
         </div>
       </section>
