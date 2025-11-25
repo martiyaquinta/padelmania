@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        'navy': '#002E4D',
-        'mint': '#6FCF97',
+        'navy': '#0b2132',
+        'mint': '#cee929',
         'natural-white': '#FAFAFA',
         'sand-gray': '#E0DDD5'
       },
