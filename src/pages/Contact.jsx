@@ -193,10 +193,10 @@ const Contact = () => {
                     Para consultas más detalladas
                   </p>
                   <a
-                    href="mailto:info@padelmania.com"
+                    href="mailto:padelmaniasierras@gmail.com"
                     className="text-mint text-sm font-medium hover:text-navy transition-colors"
                   >
-                    info@padelmania.com
+                    padelmaniasierras@gmail.com
                   </a>
                 </div>
               </div>
