@@ -117,27 +117,6 @@ const Footer = () => {
             ))}
           </div>
         </div>
-
-        {/* Links sections - moved to side */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-          {footerSections.map((section, index) => (
-            <div key={index} className="text-center md:text-left">
-              <h4 className="font-semibold text-mint mb-4">{section.title}</h4>
-              <ul className="space-y-2">
-                {section.links.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      to={link.href}
-                      className="text-gray-300 hover:text-white transition-colors text-sm"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Next section preview */}
