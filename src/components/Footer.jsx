@@ -98,8 +98,7 @@ const Footer = () => {
             </Link>
             
             <p className="text-gray-300 mb-6 max-w-md">
-              En Padelmania creemos que cada punto es una oportunidad para cuidar tu rendimiento 
-              y tu bienestar. Productos de pádel con enfoque en la naturaleza del juego.
+              En Padelmania creemos que cada punto es una oportunidad para cuidar tu rendimiento y tu bienestar. Productos de pádel con enfoque en la naturaleza del juego.
             </p>
 
             {/* Newsletter */}
