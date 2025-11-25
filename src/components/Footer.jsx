@@ -220,22 +220,10 @@ const Footer = () => {
       {/* Bottom bar */}
       <div className="border-t border-gray-600">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+          <div className="text-center">
             <p className="text-sm text-gray-400">
               © {currentYear} Padelmania. Todos los derechos reservados.
             </p>
-            
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <Link to="#" className="hover:text-white transition-colors">
-                Política de privacidad
-              </Link>
-              <Link to="#" className="hover:text-white transition-colors">
-                Términos de uso
-              </Link>
-              <Link to="#" className="hover:text-white transition-colors">
-                Cookies
-              </Link>
-            </div>
           </div>
         </div>
       </div>
