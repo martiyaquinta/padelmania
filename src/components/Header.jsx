@@ -39,7 +39,7 @@ const Header = ({ onCartOpen }) => {
             <img 
               src="/assets/logo.png" 
               alt="Padelmania Logo" 
-              className="h-10 w-auto"
+              className="h-16 w-auto"
               onError={(e) => {
                 e.target.style.display = 'none';
                 e.target.nextElementSibling.style.display = 'block';
