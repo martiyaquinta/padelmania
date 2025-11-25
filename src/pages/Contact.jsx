@@ -171,12 +171,12 @@ const Contact = () => {
                     Chateá directamente con nuestro equipo
                   </p>
                   <a
-                    href="https://wa.me/5491123456789"
+                    href="https://wa.me/5492261400285"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-mint text-sm font-medium hover:text-navy transition-colors"
                   >
-                    +54 9 11 2345-6789
+                    +54 9 226 140-0285
                   </a>
                 </div>
               </div>
