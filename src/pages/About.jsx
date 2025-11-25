@@ -31,7 +31,7 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    En 2020, un grupo de apasionados por el pádel se dio cuenta de que 
+                    En 2025, un grupo de apasionados por el pádel se dio cuenta de que 
                     faltaba algo en el mercado: productos que no solo fueran de calidad, 
                     sino que también respetaran el medio ambiente y promovieran un 
                     bienestar integral.
