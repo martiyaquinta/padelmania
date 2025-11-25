@@ -1,40 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [newsletterStatus, setNewsletterStatus] = useState('');
-
-  const handleNewsletterSubmit = (e) => {
-    e.preventDefault();
-    
-    if (!newsletterEmail.trim()) {
-      setNewsletterStatus('error');
-      return;
-    }
-
-    // Crear el enlace mailto para enviar la suscripción
-    const subject = encodeURIComponent('Nueva suscripción al newsletter - Padelmania');
-    const body = encodeURIComponent(
-      `Nueva suscripción al newsletter:\n\n` +
-      `Email: ${newsletterEmail}\n` +
-      `Fecha: ${new Date().toLocaleString('es-AR')}\n\n` +
-      `Por favor, agregar este email a la lista de suscriptores.`
-    );
-    
-    const mailtoLink = `mailto:padelmaniasierras@gmail.com?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
-    
-    // Mostrar mensaje de éxito
-    setNewsletterStatus('success');
-    setNewsletterEmail('');
-    
-    // Limpiar mensaje después de 5 segundos
-    setTimeout(() => {
-      setNewsletterStatus('');
-    }, 5000);
-  };
 
   const socialLinks = [
     {
@@ -108,82 +76,52 @@ const Footer = () => {
 
       {/* Main footer content */}
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Brand section */}
-          <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center space-x-2 mb-4">
-              <img 
-                src="/assets/logo.png" 
-                alt="Padelmania Logo" 
-                className="h-8 w-auto"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextElementSibling.style.display = 'block';
-                }}
-              />
-              <div 
-                className="hidden text-2xl font-bold text-mint"
-                style={{ display: 'none' }}
+        <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+          {/* Logo */}
+          <Link to="/" className="mb-6">
+            <img 
+              src="/assets/logo.png" 
+              alt="Padelmania Logo" 
+              className="h-20 w-auto"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextElementSibling.style.display = 'block';
+              }}
+            />
+            <div 
+              className="hidden text-2xl font-bold text-mint"
+              style={{ display: 'none' }}
+            >
+              Padelmania
+            </div>
+          </Link>
+          
+          {/* Texto descriptivo */}
+          <p className="text-gray-300 text-lg mb-8">
+            En Padelmania creemos que cada punto es una oportunidad para cuidar tu rendimiento y tu bienestar. Productos de pádel con enfoque en la naturaleza del juego.
+          </p>
+
+          {/* Social links */}
+          <div className="flex space-x-4">
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-mint transition-colors"
+                aria-label={`Seguinos en ${social.name}`}
               >
-                Padelmania
-              </div>
-            </Link>
-            
-            <p className="text-gray-300 mb-6 max-w-md">
-              En Padelmania creemos que cada punto es una oportunidad para cuidar tu rendimiento y tu bienestar. Productos de pádel con enfoque en la naturaleza del juego.
-            </p>
-
-            {/* Newsletter */}
-            <div className="mb-6">
-              <h4 className="font-semibold text-mint mb-3">Newsletter</h4>
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="email"
-                  placeholder="Tu email"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="flex-1 px-4 py-2 bg-white bg-opacity-10 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-mint focus:border-transparent"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="btn-secondary py-2 px-6 whitespace-nowrap"
-                >
-                  Suscribirme
-                </button>
-              </form>
-              {newsletterStatus === 'success' && (
-                <p className="text-sm text-mint mt-2">
-                  ✓ ¡Gracias por suscribirte!
-                </p>
-              )}
-              {newsletterStatus === 'error' && (
-                <p className="text-sm text-red-400 mt-2">
-                  Por favor, ingresá un email válido.
-                </p>
-              )}
-            </div>
-
-            {/* Social links */}
-            <div className="flex space-x-4">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-mint transition-colors"
-                  aria-label={`Seguinos en ${social.name}`}
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
+                {social.icon}
+              </a>
+            ))}
           </div>
+        </div>
 
-          {/* Links sections */}
+        {/* Links sections - moved to side */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           {footerSections.map((section, index) => (
-            <div key={index}>
+            <div key={index} className="text-center md:text-left">
               <h4 className="font-semibold text-mint mb-4">{section.title}</h4>
               <ul className="space-y-2">
                 {section.links.map((link) => (
