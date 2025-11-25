@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState('');
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    
+    if (!newsletterEmail.trim()) {
+      setNewsletterStatus('error');
+      return;
+    }
+
+    // Crear el enlace mailto para enviar la suscripción
+    const subject = encodeURIComponent('Nueva suscripción al newsletter - Padelmania');
+    const body = encodeURIComponent(
+      `Nueva suscripción al newsletter:\n\n` +
+      `Email: ${newsletterEmail}\n` +
+      `Fecha: ${new Date().toLocaleString('es-AR')}\n\n` +
+      `Por favor, agregar este email a la lista de suscriptores.`
+    );
+    
+    const mailtoLink = `mailto:padelmaniasierras@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = mailtoLink;
+    
+    // Mostrar mensaje de éxito
+    setNewsletterStatus('success');
+    setNewsletterEmail('');
+    
+    // Limpiar mensaje después de 5 segundos
+    setTimeout(() => {
+      setNewsletterStatus('');
+    }, 5000);
+  };
 
   const socialLinks = [
     {
@@ -104,11 +136,14 @@ const Footer = () => {
             {/* Newsletter */}
             <div className="mb-6">
               <h4 className="font-semibold text-mint mb-3">Newsletter</h4>
-              <form className="flex flex-col sm:flex-row gap-2">
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="email"
                   placeholder="Tu email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   className="flex-1 px-4 py-2 bg-white bg-opacity-10 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-mint focus:border-transparent"
+                  required
                 />
                 <button
                   type="submit"
@@ -117,6 +152,16 @@ const Footer = () => {
                   Suscribirme
                 </button>
               </form>
+              {newsletterStatus === 'success' && (
+                <p className="text-sm text-mint mt-2">
+                  ✓ ¡Gracias por suscribirte!
+                </p>
+              )}
+              {newsletterStatus === 'error' && (
+                <p className="text-sm text-red-400 mt-2">
+                  Por favor, ingresá un email válido.
+                </p>
+              )}
             </div>
 
             {/* Social links */}
