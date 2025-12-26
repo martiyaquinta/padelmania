@@ -68,7 +68,7 @@ const ChatBot = () => {
         
       case "contact":
         addMessage("Necesito contacto", false);
-        simulateTyping("📞 Podés contactarnos por:\n• WhatsApp: +54 9 226 140-0285\n• Email: padelmaniasierras@gmail.com\n• Instagram: @padelmania\n\n¡Estamos para ayudarte!");
+        simulateTyping("📞 Podés contactarnos por:\n• WhatsApp: +54 9 226 140-0285\n• Email: padelmaniasierras@gmail.com\n• Instagram: @padelmania.sierras\n\n¡Estamos para ayudarte!");
         break;
         
       case "recommend":

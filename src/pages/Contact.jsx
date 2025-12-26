@@ -213,12 +213,12 @@ const Contact = () => {
                     Seguinos para novedades y tips
                   </p>
                   <a
-                    href="https://instagram.com/padelmania"
+                    href="https://instagram.com/padelmania.sierras"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-mint text-sm font-medium hover:text-navy transition-colors"
                   >
-                    @padelmania
+                    @padelmania.sierras
                   </a>
                 </div>
               </div>
