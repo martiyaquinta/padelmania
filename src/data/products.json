@@ -13,7 +13,7 @@
       ],
       "stock": 45,
       "tags": ["premium", "profesional", "durabilidad"],
-      "description": "Pelota de pádel premium diseñada para jugadores que buscan rendimiento y durabilidad excepcional. Fabricada con materiales sostenibles.",
+      "description": "Pelota de pádel premium diseñada para jugadores que buscan rendimiento y durabilidad excepcional.",
       "specifications": {
         "material": "Caucho natural premium",
         "presion": "Optimizada para todas las condiciones",
@@ -33,10 +33,10 @@
         "/assets/images/pelota-ecospin-2.jpg"
       ],
       "stock": 32,
-      "tags": ["eco-friendly", "suave", "iniciación"],
-      "description": "Pelota de iniciación con impacto suave, perfecta para principiantes. Fabricada con materiales 100% reciclables.",
+      "tags": ["suave", "iniciación", "principiante"],
+      "description": "Pelota de iniciación con impacto suave, perfecta para principiantes.",
       "specifications": {
-        "material": "Caucho reciclado",
+        "material": "Caucho de alta calidad",
         "presion": "Reducida para mayor control",
         "durabilidad": "Media-alta",
         "certificacion": "Eco-certified"
@@ -76,10 +76,10 @@
         "/assets/images/cubregrip-eco-2.jpg"
       ],
       "stock": 89,
-      "tags": ["eco-friendly", "tacto suave", "reemplazo"],
-      "description": "Cubregrip ecológico con tacto natural y excelente adherencia. Fabricado con materiales sostenibles.",
+      "tags": ["tacto suave", "reemplazo", "confort"],
+      "description": "Cubregrip con tacto natural y excelente adherencia.",
       "specifications": {
-        "material": "Fibra natural tratada",
+        "material": "Fibra de alta calidad",
         "grosor": "0.5mm",
         "absorcion": "Media absorción",
         "instalacion": "Fácil instalación"
@@ -192,7 +192,6 @@
   ],
   "tags": [
     "premium",
-    "eco-friendly",
     "profesional",
     "iniciación",
     "durabilidad",

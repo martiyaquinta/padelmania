@@ -106,7 +106,7 @@ const Shop = () => {
                 Pelotas
               </h3>
               <p className="text-sm text-gray-600">
-                Premium y eco-friendly para todos los niveles
+                Premium para todos los niveles
               </p>
             </a>
             

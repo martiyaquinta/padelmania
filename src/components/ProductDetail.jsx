@@ -51,9 +51,9 @@ const ProductDetail = ({ product }) => {
     // Simular generación de IA con diferentes respuestas según el producto
     const aiDescriptions = {
       '1': "Pelota PadelNature Pro: Sentí la energía del juego y la suavidad del impacto, creada para quienes viven el pádel con pasión. Su construcción premium te conecta con cada punto como una extensión natural de tu técnica.",
-      '2': "EcoSpin Soft: La pelota que respeta tu aprendizaje y el medio ambiente. Cada rebote es una oportunidad de crecer, diseñada para que sientas la confianza desde el primer golpe hasta el último punto.",
+      '2': "EcoSpin Soft: La pelota perfecta para tu aprendizaje. Cada rebote es una oportunidad de crecer, diseñada para que sientas la confianza desde el primer golpe hasta el último punto.",
       '3': "Grip Wave Control: Tu conexión perfecta con la pala. Sentí cómo cada movimiento se transmite con precisión absoluta, donde el control y la comodidad se encuentran en armonía natural.",
-      '4': "Cubregrip EcoFeel: La textura que habla tu idioma de juego. Fabricado pensando en la sostenibilidad y en esas sensaciones únicas que solo un verdadero jugador puede apreciar.",
+      '4': "Cubregrip EcoFeel: La textura que habla tu idioma de juego. Diseñado para brindarte esas sensaciones únicas que solo un verdadero jugador puede apreciar.",
       '5': "Gorra AirFlow Verde: Protección que fluye contigo. Cuando el sol es intenso y el juego se alarga, sentí la libertad de moverte sin límites bajo su cuidado técnico.",
       '6': "Gorra ArenaWave: Elegancia que acompaña tu estilo. Inspirada en las texturas naturales de la arena y las olas, para jugadores que entienden que el pádel es arte en movimiento.",
       '7': "Muñequera SoftShield Azul: Tu escudo contra la humedad, tu aliado en cada intercambio. Tecnología que desaparece en tu muñeca para que solo sientas el juego puro.",

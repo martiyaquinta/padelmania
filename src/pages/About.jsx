@@ -32,15 +32,14 @@ const About = () => {
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
                     En 2025, un grupo de apasionados por el pádel se dio cuenta de que 
-                    faltaba algo en el mercado: productos que no solo fueran de calidad, 
-                    sino que también respetaran el medio ambiente y promovieran un 
-                    bienestar integral.
+                    faltaba algo en el mercado: productos de calidad que promovieran un 
+                    bienestar integral y una conexión auténtica con el deporte.
                   </p>
                   <p>
                     Así nació Padelmania, con la misión de ofrecer productos de pádel 
                     que conecten a los jugadores con la esencia natural del deporte. 
-                    Cada producto que seleccionamos cuenta una historia de sustentabilidad, 
-                    innovación y respeto por el juego.
+                    Cada producto que seleccionamos cuenta una historia de innovación 
+                    y respeto por el juego.
                   </p>
                   <p>
                     Creemos que el pádel es más que golpear una pelota: es una oportunidad 
@@ -99,13 +98,13 @@ const About = () => {
               <div className="text-center">
                 <div className="w-16 h-16 bg-mint rounded-full flex items-center justify-center mx-auto mb-6">
                   <svg className="w-8 h-8 text-navy" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 3.314-2.686 6-6 6a6 6 0 01-5.668-7.973z" clipRule="evenodd" />
+                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-navy mb-4">Sustentabilidad</h3>
+                <h3 className="text-xl font-semibold text-navy mb-4">Excelencia</h3>
                 <p className="text-gray-600 leading-relaxed">
-                  Cada producto que elegimos respeta el medio ambiente, porque 
-                  cuidar el planeta es parte de nuestro compromiso contigo.
+                  Cada producto es seleccionado con altos estándares de calidad 
+                  para asegurar tu mejor rendimiento en la cancha.
                 </p>
               </div>
               
@@ -142,7 +141,7 @@ const About = () => {
                 <h3 className="font-semibold text-navy mb-3">Investigación</h3>
                 <p className="text-sm text-gray-600">
                   Analizamos cada producto en profundidad: materiales, 
-                  fabricación y impacto ambiental.
+                  fabricación y rendimiento.
                 </p>
               </div>
               
