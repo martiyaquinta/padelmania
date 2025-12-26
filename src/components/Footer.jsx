@@ -128,7 +128,7 @@ const Footer = () => {
               <span className="font-medium">Tips de pádel y bienestar — Próximamente</span>
             </div>
             <p className="text-sm text-gray-400 mt-1">
-              Contenido exclusivo sobre técnicas, nutrición y bienestar para jugadores
+              Contenido exclusivo sobre técnicas, nutrición y bienestar para jugadores. ¡Suscribite a nuestro newsletter!
             </p>
           </div>
         </div>
