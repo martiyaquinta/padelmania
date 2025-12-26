@@ -28,7 +28,6 @@ const ProductDetail = ({ product }) => {
 
   const getStockStatus = () => {
     if (product.stock === 0) return { text: 'Sin stock', color: 'text-red-500', available: false };
-    if (product.stock <= 5) return { text: `Últimas ${product.stock} unidades`, color: 'text-orange-500', available: true };
     return { text: 'En stock', color: 'text-green-500', available: true };
   };
 
@@ -87,13 +86,6 @@ const ProductDetail = ({ product }) => {
             {discountInfo.hasDiscount && (
               <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-lg font-bold">
                 -{discountInfo.discountPercentage}%
-              </div>
-            )}
-            
-            {/* Badge de stock bajo */}
-            {product.stock <= 5 && product.stock > 0 && (
-              <div className="absolute top-4 right-4 bg-orange-500 text-white px-3 py-1 rounded-lg text-sm font-medium">
-                ¡Últimas unidades!
               </div>
             )}
           </div>
