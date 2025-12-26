@@ -125,63 +125,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Proceso de selección */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-navy text-center mb-12">
-              Cómo seleccionamos nuestros productos
-            </h2>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
-                  1
-                </div>
-                <h3 className="font-semibold text-navy mb-3">Investigación</h3>
-                <p className="text-sm text-gray-600">
-                  Analizamos cada producto en profundidad: materiales, 
-                  fabricación y rendimiento.
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
-                  2
-                </div>
-                <h3 className="font-semibold text-navy mb-3">Pruebas</h3>
-                <p className="text-sm text-gray-600">
-                  Nuestro equipo de jugadores profesionales prueba 
-                  cada producto en condiciones reales.
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
-                  3
-                </div>
-                <h3 className="font-semibold text-navy mb-3">Certificación</h3>
-                <p className="text-sm text-gray-600">
-                  Verificamos que cumplan nuestros estándares de 
-                  calidad, sustentabilidad y rendimiento.
-                </p>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-navy text-white rounded-full flex items-center justify-center mx-auto mb-4 font-bold text-lg">
-                  4
-                </div>
-                <h3 className="font-semibold text-navy mb-3">Aprobación</h3>
-                <p className="text-sm text-gray-600">
-                  Solo llegan a nuestra tienda los productos que 
-                  superan todos nuestros filtros de calidad.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Tips section preview */}
       <section className="py-16 bg-mint bg-opacity-20">
         <div className="container mx-auto px-4">
